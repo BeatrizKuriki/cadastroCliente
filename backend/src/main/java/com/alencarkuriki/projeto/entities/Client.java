@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-public class Cliente implements Serializable{	
+public class Client implements Serializable{	
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
@@ -14,11 +14,11 @@ public class Cliente implements Serializable{
 	private Instant birthDate;
     private Integer children;
     
-    public Cliente() {
+    public Client() {
     	
     }
 
-	public Cliente(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
+	public Client(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
 	
 		this.id = id;
 		this.name = name;
@@ -89,7 +89,7 @@ public class Cliente implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cliente other = (Cliente) obj;
+		Client other = (Client) obj;
 		return Objects.equals(id, other.id);
 	}
 	

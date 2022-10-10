@@ -12,47 +12,47 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alencarkuriki.projeto.dto.ClienteDTO;
-import com.alencarkuriki.projeto.entities.Cliente;
-import com.alencarkuriki.projeto.repositories.ClienteRepository;
+import com.alencarkuriki.projeto.dto.ClientDTO;
+import com.alencarkuriki.projeto.entities.Client;
+import com.alencarkuriki.projeto.repositories.ClientRepository;
 
 @Service
-public class ClienteService {
+public class ClientService {
 	@Autowired
-	private ClienteRepository repository;
+	private ClientRepository repository;
 	
 
 	@Transactional(readOnly = true)
-	public Page<ClienteDTO> findAllPaged(PageRequest pageResquest) {
-		Page<Cliente> list = repository.findAll(pageResquest);
+	public Page<ClientDTO> findAllPaged(PageRequest pageResquest) {
+		Page<Client> list = repository.findAll(pageResquest);
 
-		return list.map(x -> new ClienteDTO(x));
+		return list.map(x -> new ClientDTO(x));
 
 	
 	}
 	@Transactional(readOnly = true)
-	public ClienteDTO findById(Long id) {
-		Optional<Cliente> obj = repository.findById(id);
-		Cliente entity = obj.orElseThrow(()-> new ResourceNotFoundException("Entity not found"));
-		return  new ClienteDTO(entity, entity.getCategories());
+	public ClientDTO findById(Long id) {
+		Optional<Client> obj = repository.findById(id);
+		Client entity = obj.orElseThrow(()-> new ResourceNotFoundException("Entity not found"));
+		return  new ClientDTO(entity, entity.getCategories());
 	}
 	@Transactional
-	public ClienteDTO insert(ClienteDTO dto) {
-		Cliente entity = new Cliente();
+	public ClientDTO insert(ClientDTO dto) {
+		Client entity = new Client();
 		copyDtoToEntity(dto, entity);
 		//entity.setName(dto.getName());
 		entity = repository.save(entity);
-		return new ClienteDTO(entity);
+		return new ClientDTO(entity);
 	}
 	
 	@Transactional
-	public ClienteDTO update(Long id, ClienteDTO dto) {	
+	public ClientDTO update(Long id, ClientDTO dto) {	
 		try {
-		Cliente entity = repository.getOne(id);
+		Client entity = repository.getOne(id);
 		copyDtoToEntity(dto, entity);
 		//entity.setName(dto.getName());
 		entity = repository.save(entity);
-		return new ClienteDTO(entity);
+		return new ClientDTO(entity);
 		}
 		catch(EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not Found" + id);
@@ -74,12 +74,12 @@ public class ClienteService {
 			throw new DataBaseException ("Integrity violation.");
 		}
 		}
-		private void copyDtoToEntity(ClienteDTO dto, Cliente entity) {
+		private void copyDtoToEntity(ClientDTO dto, Client entity) {
 			entity.setName(dto.getName());
-			entity.setDescription(dto.getDescription());
-			entity.setDate(dto.getDate());
-			entity.setImgUrl(dto.getImgUrl());
-			entity.setPrice(dto.getPrice());
+			entity.setCpf(dto.getCpf());
+			entity.setIncome(dto.getIncome());
+			entity.setBirthDate(dto.getBirthDate());
+			entity.setChildre(dto.getChildren());
 			
 			
 			

@@ -18,19 +18,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.alencarkuriki.projeto.dto.ClienteDTO;
-import com.alencarkuriki.projeto.services.ClienteService;
+import com.alencarkuriki.projeto.dto.ClientDTO;
+import com.alencarkuriki.projeto.services.ClientService;
 
 
 
 @RestController
 @RequestMapping(value = "/clientes")
- class ClienteResources {
+ class ClientResources {
 	@Autowired
-	private ClienteService service;
+	private ClientService service;
 	
 	@GetMapping
-	public ResponseEntity<Page<ClienteDTO>> findAll(
+	public ResponseEntity<Page<ClientDTO>> findAll(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
 			@RequestParam(value = "orderBy", defaultValue = "ASC") String direction,
@@ -41,19 +41,19 @@ import com.alencarkuriki.projeto.services.ClienteService;
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy );
 		
 		
-		Page<ClienteDTO> list = service.findAllPaged(pageRequest);		
+		Page<ClientDTO> list = service.findAllPaged(pageRequest);		
 		return ResponseEntity.ok().body(list);
 		
 	}
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ClienteDTO> findById(@PathVariable Long id){
-		ClienteDTO dto = service.findById(id);		
+	public ResponseEntity<ClientDTO> findById(@PathVariable Long id){
+		ClientDTO dto = service.findById(id);		
 		return ResponseEntity.ok().body(dto);
 
 }
 	
 	@PostMapping
-	public ResponseEntity<ClienteDTO> insert(@RequestBody ClienteDTO dto){
+	public ResponseEntity<ClientDTO> insert(@RequestBody ClientDTO dto){
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
 				.buildAndExpand(dto.getId()).toUri();
@@ -61,7 +61,7 @@ import com.alencarkuriki.projeto.services.ClienteService;
 		
 	}
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ClienteDTO> update(@PathVariable Long id, @RequestBody ClienteDTO dto){
+	public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO dto){
 		dto = service.update(id, dto);
 		
 		return ResponseEntity.ok().body(dto);

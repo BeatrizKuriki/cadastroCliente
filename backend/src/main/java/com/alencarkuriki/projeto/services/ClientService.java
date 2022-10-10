@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alencarkuriki.projeto.dto.ClientDTO;
 import com.alencarkuriki.projeto.entities.Client;
 import com.alencarkuriki.projeto.repositories.ClientRepository;
+import com.alencarkuriki.projeto.services.exceptions.DataBaseException;
+import com.alencarkuriki.projeto.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ClientService {
@@ -34,7 +36,7 @@ public class ClientService {
 	public ClientDTO findById(Long id) {
 		Optional<Client> obj = repository.findById(id);
 		Client entity = obj.orElseThrow(()-> new ResourceNotFoundException("Entity not found"));
-		return  new ClientDTO(entity, entity.getCategories());
+		return  new ClientDTO(entity);
 	}
 	@Transactional
 	public ClientDTO insert(ClientDTO dto) {
@@ -79,7 +81,7 @@ public class ClientService {
 			entity.setCpf(dto.getCpf());
 			entity.setIncome(dto.getIncome());
 			entity.setBirthDate(dto.getBirthDate());
-			entity.setChildre(dto.getChildren());
+			entity.setChildren(dto.getChildren());
 			
 			
 			

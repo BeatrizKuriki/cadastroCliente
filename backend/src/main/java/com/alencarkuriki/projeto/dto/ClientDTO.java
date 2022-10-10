@@ -20,9 +20,10 @@ import com.alencarkuriki.projeto.entities.Client;
     private Integer children;
     
     
-  public ClientDTO() {
+  public ClientDTO(Client x){
 	  
   }
+
 
 
 public ClientDTO(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {

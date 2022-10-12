@@ -20,12 +20,15 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.alencarkuriki.projeto.dto.ClientDTO;
 import com.alencarkuriki.projeto.services.ClientService;
+/*
+ * 
+ */
 
 
 
 @RestController
 @RequestMapping(value = "/client")
- class ClientResources {
+ class ClientResource {
 	@Autowired
 	private ClientService service;
 	

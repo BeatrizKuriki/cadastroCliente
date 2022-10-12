@@ -24,7 +24,7 @@ import com.alencarkuriki.projeto.services.ClientService;
 
 
 @RestController
-@RequestMapping(value = "/clientes")
+@RequestMapping(value = "/client")
  class ClientResources {
 	@Autowired
 	private ClientService service;

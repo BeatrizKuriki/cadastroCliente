@@ -16,8 +16,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name ="tb_cliente")
-public class ClienteCategory implements Serializable {
+@Table(name ="tb_client")
+public class ClientCategory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,11 +32,11 @@ public class ClienteCategory implements Serializable {
 
 	Set<Category> categories = new HashSet<>();
 
-	public ClienteCategory() {
+	public ClientCategory() {
 
 	}
 
-	public ClienteCategory(Long id, String name, String cpf, Double income, Instant birthDate, Integer children,
+	public ClientCategory(Long id, String name, String cpf, Double income, Instant birthDate, Integer children,
 			Set<Category> categories) {
 
 		this.id = id;
@@ -117,7 +117,7 @@ public class ClienteCategory implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ClienteCategory other = (ClienteCategory) obj;
+		ClientCategory other = (ClientCategory) obj;
 		return Objects.equals(id, other.id);
 	}
 

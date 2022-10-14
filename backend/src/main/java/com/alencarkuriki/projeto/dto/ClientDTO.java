@@ -2,7 +2,7 @@ package com.alencarkuriki.projeto.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import com.alencarkuriki.projeto.entities.Client;

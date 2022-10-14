@@ -54,12 +54,12 @@ public class ClientService {
 	@Transactional
 	public ClientDTO update(Long id, ClientDTO dto) {	
 		try {
-		Client entity = repository.getById(id);
+		Client entity = repository.getReferenceById(id);
 		entity.setName(dto.getName());
 		entity = repository.save(entity);		
 		return new ClientDTO(entity);
 		}
-		catch(javax.persistence.EntityExistsException e) {
+		catch(EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not Found" + id);
 			
 		}

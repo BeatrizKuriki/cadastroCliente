@@ -41,23 +41,25 @@ public class ClientService {
 	@Transactional
 	public ClientDTO insert(ClientDTO dto) {
 		Client entity = new Client();
-		copyDtoToEntity(dto, entity);
-		//entity.setName(dto.getName());
+		entity.setName(dto.getName());
+		entity.setCpf(dto.getCpf());
+		entity.setIncome(dto.getIncome());
+		entity.setBirthDate(dto.getBirthDate());
+		entity.setChildren(dto.getChildren());
 		entity = repository.save(entity);
 		return new ClientDTO(entity);
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Transactional
 	public ClientDTO update(Long id, ClientDTO dto) {	
 		try {
-		Client entity = repository.getOne(id);
-		copyDtoToEntity(dto, entity);
-		//entity.setName(dto.getName());
-		entity = repository.save(entity);
+		Client entity = repository.getById(id);
+		entity.setName(dto.getName());
+		entity = repository.save(entity);		
 		return new ClientDTO(entity);
 		}
-		catch(EntityNotFoundException e) {
+		catch(javax.persistence.EntityExistsException e) {
 			throw new ResourceNotFoundException("Id not Found" + id);
 			
 		}
@@ -77,13 +79,7 @@ public class ClientService {
 			throw new DataBaseException ("Integrity violation.");
 		}
 		}
-		private void copyDtoToEntity(ClientDTO dto, Client entity) {
-			entity.setName(dto.getName());
-			entity.setCpf(dto.getCpf());
-			entity.setIncome(dto.getIncome());
-			entity.setBirthDate(dto.getBirthDate());
-			entity.setChildren(dto.getChildren());
-			
+	
 			
 			
 			
@@ -98,4 +94,4 @@ public class ClientService {
 
 
 	
-}
+

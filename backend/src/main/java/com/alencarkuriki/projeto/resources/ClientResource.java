@@ -48,7 +48,7 @@ import com.alencarkuriki.projeto.services.ClientService;
 
 
 @RestController
-@RequestMapping(value = "/clients")
+@RequestMapping(value = "/client")
  class ClientResource {
 	/*
 	 * AQUI IREMOS CRIAR NOSSO PRIMEIRO ENDPOINT, OU SEJA A PRIMEIRA ROTA POSSÍVEL QUE VAI 

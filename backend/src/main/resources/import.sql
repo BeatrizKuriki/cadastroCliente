@@ -1,6 +1,3 @@
-
-
-
 INSERT INTO tb_client (name,cpf,income, birth_Date,children)VALUES("Maria Tereza da Silva", 05239814520, 2.500, 15/09/1960,4);
 INSERT INTO tb_client (name,cpf,income, birth_Date,children)VALUES("João Pedro Neves", 02139914210, 4.500, 28/05/1995,1);
 INSERT INTO tb_client (name,cpf,income, birth_Date,children)VALUES("Anita Perez", 01004012500, 1.500, 01/10/1980,0);

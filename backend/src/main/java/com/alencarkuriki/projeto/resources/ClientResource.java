@@ -67,9 +67,10 @@ import com.alencarkuriki.projeto.services.ClientService;
 			 * E ENTRE <> VC DIZ QUAL O TIPO DE DADA ESTARÁ NO PAYLOAD(CORPO DA RESPOSTA)
 			 */
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
-			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "ASC") String direction,
-			@RequestParam(value = "direction", defaultValue = "name") String orderBy
+			@RequestParam(value = "linesPerPage", defaultValue = "6") Integer linesPerPage,
+		
+			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
+			@RequestParam(value = "orderBy", defaultValue = "name") String orderBy
 			
 			){
 		
